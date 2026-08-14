@@ -90,6 +90,7 @@ staged + unstaged + untracked changes in the current directory's repo.
 | `--to <ref>` | — | — | Target ref to end the diff at (e.g., `feature-branch`). When set, OCR computes `merge-base(from, to)..to`. |
 | `--commit <sha>` | `-c` | — | Single commit to review (vs its parent). |
 | `--preview` | `-p` | `false` | Run the filter pipeline but skip the LLM. Prints the file list and exclusion reasons. Honors `--format json`; `--format sarif` is not supported (a preview has no completed findings to emit). |
+| `--no-filter` | — | `false` | Keep all review comments and skip the per-file `REVIEW_FILTER_TASK` LLM post-processing call. |
 | `--resume <session-id>` | — | — | Resume from a previous compatible range or commit review session. |
 | `--format <fmt>` | `-f` | `text` | `text` (human-readable), `json` (machine-readable comment array), or `sarif` (SARIF 2.1.0 report for GitHub Code Scanning). |
 | `--audience <who>` | — | `human` | `human` streams progress lines; `agent` quiets stdout and prints only the final summary / JSON. |
@@ -195,8 +196,9 @@ would review the same thing the parent did:
 - a provider or model change must be asked for explicitly with `--provider` /
   `--model`. A change that arrived through config or the environment is rejected
 - the parent must carry a run manifest, which is what its input is verified
-  against. A run killed with Ctrl-C never wrote one, and sessions older than run
-  manifests never had one
+  against. After file dispatch begins, Ctrl-C cancels the review gracefully and
+  records one, so completed checkpoints remain resumable. A process killed
+  before graceful shutdown and sessions older than run manifests do not have one
 - only files the parent's manifest settled are reused. A checkpoint the manifest
   does not account for, or one that is unreadable, costs that file its
   checkpoint and nothing more — it is simply reviewed again

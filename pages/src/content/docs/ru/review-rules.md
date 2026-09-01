@@ -165,11 +165,11 @@ OCR использует [`bmatcuk/doublestar/v4`](https://pkg.go.dev/github.com
 | `**/*.{hbs,mustache}` | `handlebars_mustache.md` — шаблоны Handlebars и Mustache. |
 | `**/*.ets` | `arkts.md` — ArkTS / HarmonyOS. |
 | `**/*.astro` | `astro.md` — компоненты и islands Astro. |
-| `**/*.{ts,js,tsx,jsx}` | `ts_js_tsx_jsx.md` |
+| `**/*.{ts,js,tsx,jsx,mjs,cjs}` | `ts_js_tsx_jsx.md` |
 | `**/*.{kt}` | `kotlin.md` |
 | `**/*.rs` | `rust.md` |
 | `**/*.R` | `r.md` |
-| `**/*.{cpp,cc,hpp}` | `cpp.md` |
+| `**/*.{cpp,cc,cxx,hpp,hxx}` | `cpp.md` |
 | `**/*.c` | `c.md` |
 | `**/*.{py,ipynb}` | `python.md` — исходный код Python. |
 | `**/*.{php,phtml}` | `php.md` — исходный код PHP и шаблоны PHP. |

@@ -163,11 +163,11 @@ matching order:
 | `**/*.{hbs,mustache}` | `handlebars_mustache.md` — Handlebars and Mustache templates. |
 | `**/*.ets` | `arkts.md` — ArkTS / HarmonyOS. |
 | `**/*.astro` | `astro.md` — Astro components and islands. |
-| `**/*.{ts,js,tsx,jsx}` | `ts_js_tsx_jsx.md` |
+| `**/*.{ts,js,tsx,jsx,mjs,cjs}` | `ts_js_tsx_jsx.md` |
 | `**/*.{kt}` | `kotlin.md` |
 | `**/*.rs` | `rust.md` |
 | `**/*.R` | `r.md` |
-| `**/*.{cpp,cc,hpp}` | `cpp.md` |
+| `**/*.{cpp,cc,cxx,hpp,hxx}` | `cpp.md` |
 | `**/*.c` | `c.md` |
 | `**/*.{py,ipynb}` | `python.md` — Python source. |
 | `**/*.{php,phtml}` | `php.md` — PHP source and PHP templates. |

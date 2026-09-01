@@ -154,11 +154,11 @@ diff 단계에서 일어납니다.
 | `**/*.{hbs,mustache}` | `handlebars_mustache.md` — Handlebars 및 Mustache 템플릿. |
 | `**/*.ets` | `arkts.md` — ArkTS / HarmonyOS. |
 | `**/*.astro` | `astro.md` — Astro 컴포넌트와 아일랜드. |
-| `**/*.{ts,js,tsx,jsx}` | `ts_js_tsx_jsx.md` |
+| `**/*.{ts,js,tsx,jsx,mjs,cjs}` | `ts_js_tsx_jsx.md` |
 | `**/*.{kt}` | `kotlin.md` |
 | `**/*.rs` | `rust.md` |
 | `**/*.R` | `r.md` |
-| `**/*.{cpp,cc,hpp}` | `cpp.md` |
+| `**/*.{cpp,cc,cxx,hpp,hxx}` | `cpp.md` |
 | `**/*.c` | `c.md` |
 | `**/*.{py,ipynb}` | `python.md` — Python 소스. |
 | `**/*.{php,phtml}` | `php.md` — PHP 소스와 PHP 템플릿. |

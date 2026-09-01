@@ -125,11 +125,11 @@ OCR は [`bmatcuk/doublestar/v4`](https://pkg.go.dev/github.com/bmatcuk/doublest
 | `**/*.{hbs,mustache}` | `handlebars_mustache.md`: Handlebars / Mustache テンプレート。 |
 | `**/*.ets` | `arkts.md`: ArkTS / HarmonyOS。 |
 | `**/*.astro` | `astro.md`: Astro コンポーネントと islands。 |
-| `**/*.{ts,js,tsx,jsx}` | `ts_js_tsx_jsx.md` |
+| `**/*.{ts,js,tsx,jsx,mjs,cjs}` | `ts_js_tsx_jsx.md` |
 | `**/*.{kt}` | `kotlin.md` |
 | `**/*.rs` | `rust.md` |
 | `**/*.R` | `r.md` |
-| `**/*.{cpp,cc,hpp}` | `cpp.md` |
+| `**/*.{cpp,cc,cxx,hpp,hxx}` | `cpp.md` |
 | `**/*.c` | `c.md` |
 | `**/*.{py,ipynb}` | `python.md`: Python ソースコード。 |
 | `**/*.{php,phtml}` | `php.md`: PHP ソースと PHP テンプレート。 |

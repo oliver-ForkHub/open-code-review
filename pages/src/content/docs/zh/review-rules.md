@@ -146,11 +146,11 @@ OCR 用 [`bmatcuk/doublestar/v4`](https://pkg.go.dev/github.com/bmatcuk/doublest
 | `**/*.{hbs,mustache}` | `handlebars_mustache.md`——Handlebars 与 Mustache 模板。 |
 | `**/*.ets` | `arkts.md`——ArkTS / HarmonyOS。 |
 | `**/*.astro` | `astro.md`——Astro 组件与 islands。 |
-| `**/*.{ts,js,tsx,jsx}` | `ts_js_tsx_jsx.md` |
+| `**/*.{ts,js,tsx,jsx,mjs,cjs}` | `ts_js_tsx_jsx.md` |
 | `**/*.{kt}` | `kotlin.md` |
 | `**/*.rs` | `rust.md` |
 | `**/*.R` | `r.md` |
-| `**/*.{cpp,cc,hpp}` | `cpp.md` |
+| `**/*.{cpp,cc,cxx,hpp,hxx}` | `cpp.md` |
 | `**/*.c` | `c.md` |
 | `**/*.{py,ipynb}` | `python.md`——Python 源代码。 |
 | `**/*.{php,phtml}` | `php.md`——PHP 源代码和 PHP 模板。 |

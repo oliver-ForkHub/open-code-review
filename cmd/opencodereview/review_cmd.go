@@ -9,11 +9,9 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"os/signal"
 	"path/filepath"
 	"sort"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/alibaba/open-code-review/internal/agent"
@@ -100,7 +98,10 @@ var reviewCmd = &cobra.Command{
 		if err := validateReviewOptions(&reviewOpts); err != nil {
 			return err
 		}
-		ctx, stop := signal.NotifyContext(cmd.Context(), os.Interrupt, syscall.SIGTERM)
+		// First signal cancels the context so the defer chain shuts down
+		// gracefully; a second signal force-exits instead of being dropped
+		// for the whole shutdown window (see interrupt.go).
+		ctx, stop := interruptContextWithForcedExit(cmd.Context())
 		defer stop()
 		return executeReviewContext(ctx, reviewOpts)
 	},
@@ -196,10 +197,10 @@ func executeReviewContext(ctx context.Context, opts reviewOptions) (retErr error
 
 	mcpClients := initMCPClients(ctx, rt.AppCfg, tools, cc.RepoDir, Version)
 	defer func() {
-		for _, mc := range mcpClients {
-			if err := mc.Close(); err != nil {
-				fmt.Fprintf(os.Stderr, "[ocr] WARNING: failed to close MCP server %q: %v\n", mc.Name(), err)
-			}
+		closeCtx, cancel := context.WithTimeout(context.Background(), mcp.CloseAllTimeout)
+		defer cancel()
+		if err := mcp.CloseAll(closeCtx, mcpClients); err != nil {
+			fmt.Fprintf(os.Stderr, "[ocr] WARNING: %v\n", err)
 		}
 	}()
 

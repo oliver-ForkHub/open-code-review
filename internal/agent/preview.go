@@ -24,6 +24,7 @@ const (
 	ExcludeUserRule          = model.ExcludeUserRule
 	ExcludeExtension         = model.ExcludeExtension
 	ExcludeDefaultPath       = model.ExcludeDefaultPath
+	ExcludeSecret            = model.ExcludeSecret
 	ExcludeProviderDirectory = model.ExcludeProviderDirectory
 	ExcludeDeleted           = model.ExcludeDeleted
 	ExcludeBinary            = model.ExcludeBinary
@@ -36,6 +37,12 @@ const (
 // fresh, non-resumed, unbudgeted run registers as selected coverage; a zero
 // Template.MaxTokens leaves the per-file size ceiling disabled, exactly as it
 // is for a run configured that way.
+//
+// Its totals cover the tracked changeset. A workspace run also reviews
+// untracked files, but an untracked file under a provider directory (vendor/,
+// node_modules/, target/, ...) is dropped before a diff exists for it, so it is
+// neither listed nor counted: synthesizing those diffs would mean reading every
+// file under an untracked node_modules on every review, not just on preview.
 //
 // It builds none of the review runtime — no session, manifest, or runner — so
 // previewing cannot open session persistence. Going through New instead would
@@ -60,8 +67,8 @@ func (a *Agent) preview(ctx context.Context) (*DiffPreview, error) {
 
 	// Provider directory exclusions happen before the per-file gates, so
 	// selectFiles cannot report them. Preview lists them separately to make its
-	// file and line totals match the Git changeset without implying that include
-	// rules can make them reviewable.
+	// file and line totals match the tracked Git changeset without implying that
+	// include rules can make them reviewable.
 	for _, d := range providerExcluded {
 		result.TotalInsertions += d.Insertions
 		result.TotalDeletions += d.Deletions

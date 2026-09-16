@@ -1256,6 +1256,13 @@ p {
     word-break: break-word;
 }
 
+/* Offset Suggested Change code to align vertically with Existing Code when
+   line numbers are present — issue #1313.
+   0.75rem is the default pre padding-left; 2.5em is line-no min-width; 0.7rem is gap. */
+.code-panel pre.code-gutter-offset {
+    padding-left: calc(0.75rem + 2.5em + 0.7rem);
+}
+
 .code-existing .code-panel-label {
     background: #fef2f2;
     color: #dc2626;

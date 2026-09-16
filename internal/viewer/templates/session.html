@@ -173,7 +173,7 @@
                     {{if .SuggestionCode}}
                     <div class="code-panel code-suggestion">
                         <div class="code-panel-label">Suggested Change</div>
-                        <pre><code>{{.SuggestionCode}}</code></pre>
+                        <pre{{if $numbered}} class="code-gutter-offset"{{end}}><code>{{.SuggestionCode}}</code></pre>
                     </div>
                     {{end}}
                 </div>

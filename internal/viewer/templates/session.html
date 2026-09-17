@@ -203,7 +203,7 @@
     <div class="file-accordion-body">
         <ul class="file-list">
         {{range .Session.Summary.FilesReviewed}}
-            <li>{{.}}</li>
+            <li><span class="file-list-icon" aria-hidden="true">{{icon "file"}}</span><span>{{.}}</span></li>
         {{end}}
         </ul>
     </div>
@@ -334,7 +334,7 @@
                     {{range .ToolCalls}}
                     <div class="tool-call-item {{if not .Ok}}tool-call-error{{end}}">
                         <div class="tool-call-header">
-                            <span class="tool-icon">&#9881;</span>
+                            <span class="tool-icon" aria-hidden="true">{{icon "settings"}}</span>
                             <strong class="tool-name">{{.Name}}</strong>
                             {{if .DurationMs}}<span class="badge badge-duration">{{.DurationMs}}ms</span>{{end}}
                             {{if not .Ok}}<span class="badge badge-error">Failed</span>{{end}}
